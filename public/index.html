@@ -1,0 +1,29 @@
+<!-- public/index.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Todo App</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <div class="date-container">
+        <div class="day" id="day"></div>
+        <div class="date" id="date"></div>
+      </div>
+      <h1>Todo App</h1>
+    </div>
+    <div class="form">
+      <input type="text" id="title" placeholder="Enter title" required>
+      <input type="text" id="description" placeholder="Enter description" required>
+      <button id="submitBtn">Add Todo</button>
+    </div>
+    <div id="todos"></div>
+  </div>
+  <script src="script.js"></script>
+</body>
+</html>
+
