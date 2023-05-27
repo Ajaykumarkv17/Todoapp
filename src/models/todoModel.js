@@ -4,10 +4,10 @@ const mysql = require('mysql2');
 
 // Create a MySQL connection pool
 const pool = mysql.createPool({
-  host: 'localhost',
-  user: 'ajaykumar17',
-  password: 'AJay$2022',
-  database: 'todoapp',
+  host: 'bxxt9lwgfyzjas8gjv9f-mysql.services.clever-cloud.com',
+  user: 'uwtr3letqzlypsok',
+  password: 'WV9cjnTh2licMe0nfuAy',
+  database: 'bxxt9lwgfyzjas8gjv9f',
 });
 
 // Get all todos from the database
