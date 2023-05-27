@@ -3,7 +3,7 @@ body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     margin: 0;
     padding: 0;
-    background-color: lightblue;
+    background-color: aquamarine;
   }
   
   .container {
@@ -23,8 +23,8 @@ body {
   }
   
   .date-container {
-    background-color: blue;
-    color: #fff;
+    background-color:lightcoral;
+    color: black;
     padding: 10px;
     border-radius: 4px;
     font-size: 16px;
@@ -37,10 +37,16 @@ body {
     font-weight: bold;
   }
   
-  .form {
+.form {
     display: flex;
-    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
     margin-bottom: 20px;
+  }
+  
+  .form input {
+    flex: 1;
+    margin-right: 10px;
   }
   
   input[type="text"] {
@@ -56,18 +62,18 @@ body {
     border-bottom-color: #4CAF50;
   }
   
-  button {
-    padding: 10px 20px;
-    background-color: #4CAF50;
+  #submitBtn {
+    padding: 8px 16px;
+    background-color: #4caf50;
     color: #fff;
     border: none;
     border-radius: 4px;
-    font-size: 16px;
+    font-size: 14px;
     cursor: pointer;
     transition: background-color 0.3s;
   }
   
-  button:hover {
+  #submitBtn:hover {
     background-color: #45a049;
   }
   
@@ -76,6 +82,7 @@ body {
   }
   
   .todo {
+    position: relative;
     padding: 10px;
     margin-bottom: 10px;
     background-color: #f5f5f5;
@@ -91,3 +98,21 @@ body {
     margin-bottom: 0;
   }
   
+  .deleteBtn {
+    position: absolute;
+    top: 50%;
+    right: 10px;
+    transform: translateY(-50%);
+    padding: 5px 10px;
+    background-color: #f44336;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    font-size: 12px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  .deleteBtn:hover {
+    background-color: #d32f2f;
+  }

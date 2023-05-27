@@ -1,22 +1,59 @@
-const Todo = require('../models/todoModel');
+// controllers/todocontroller.js
 
-exports.getAllTodos = (req, res) => {
-  Todo.getAll((err, todos) => {
+const TodoModel = require('../models/todoModel');
+
+// Get all todos
+function getAllTodos(req, res) {
+  TodoModel.getAllTodos(function (err, todos) {
     if (err) {
-      res.status(500).json({ error: 'Failed to retrieve todos' });
-      return;
+      return res.status(500).json({ error: 'Error retrieving todos from database' });
     }
-    res.json(todos);
-  });
-};
 
-exports.createTodo = (req, res) => {
+    return res.json(todos);
+  });
+}
+
+// Create a new todo
+function createTodo(req, res) {
   const { title, description } = req.body;
-  Todo.create({ title, description }, (err, insertedId) => {
+
+  if (!title || !description) {
+    return res.status(400).json({ error: 'Title and description are required' });
+  }
+
+  const todo = {
+    title,
+    description,
+  };
+
+  TodoModel.createTodo(todo, function (err, createdTodo) {
     if (err) {
-      res.status(500).json({ error: 'Failed to create todo' });
-      return;
+      return res.status(500).json({ error: 'Error creating todo in database' });
     }
-    res.json({ id: insertedId, title, description });
+
+    return res.status(201).json(createdTodo);
   });
+}
+
+// Delete a todo
+function deleteTodo(req, res) {
+  const todoId = req.params.id;
+
+  TodoModel.deleteTodo(todoId, function (err, deleted) {
+    if (err) {
+      return res.status(500).json({ error: 'Error deleting todo from database' });
+    }
+
+    if (!deleted) {
+      return res.status(404).json({ error: 'Todo not found' });
+    }
+
+    return res.sendStatus(204);
+  });
+}
+
+module.exports = {
+  getAllTodos,
+  createTodo,
+  deleteTodo,
 };

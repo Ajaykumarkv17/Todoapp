@@ -28,6 +28,22 @@ document.addEventListener('DOMContentLoaded', () => {
         .catch((error) => console.error('Error creating todo:', error));
     });
   
+    todosContainer.addEventListener('click', (event) => {
+      if (event.target.classList.contains('deleteBtn')) {
+        const todoElement = event.target.closest('.todo');
+        const todoId = todoElement.dataset.id;
+  
+        fetch(`/todos/${todoId}`, {
+          method: 'DELETE',
+        })
+          .then((response) => response.json())
+          .then((data) => {
+            todoElement.remove();
+          })
+          .catch((error) => console.error('Error deleting todo:', error));
+      }
+    });
+  
     fetch('/todos')
       .then((response) => response.json())
       .then((data) => {
@@ -41,9 +57,12 @@ document.addEventListener('DOMContentLoaded', () => {
     function createTodoElement(todo) {
       const todoElement = document.createElement('div');
       todoElement.classList.add('todo');
+      todoElement.dataset.id = todo.id;
       todoElement.innerHTML = `
         <h3>${todo.title}</h3>
         <p>${todo.description}</p>
+        <br>
+        <button class="deleteBtn">Delete</button>
       `;
       return todoElement;
     }
