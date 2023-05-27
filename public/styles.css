@@ -116,3 +116,21 @@ body {
   .deleteBtn:hover {
     background-color: #d32f2f;
   }
+  @media screen and (max-width: 600px) {
+    .form {
+      flex-direction: column;
+    }
+  
+    .form input {
+      margin-right: 0;
+      margin-bottom: 10px;
+    }
+  
+    #submitBtn {
+      width: 100%;
+    }
+  
+    .todo {
+      padding: 8px;
+    }
+  }
