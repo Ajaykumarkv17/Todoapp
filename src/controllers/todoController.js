@@ -6,7 +6,7 @@ const TodoModel = require('../models/todoModel');
 function getAllTodos(req, res) {
   TodoModel.getAllTodos(function (err, todos) {
     if (err) {
-      return res.status(500).json({ error: 'Error retrieving todos from database' });
+      return res.status(500).json({ error: 'Error retrieving todo from database' });
     }
 
     return res.json(todos);
